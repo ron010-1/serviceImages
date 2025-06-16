@@ -1,12 +1,7 @@
 import z from "zod";
 import dotenv from "dotenv";
 
-const envs = dotenv.config();
-
-if (envs.error) {
-  console.error("Erro ao carregar .env:", envs.error);
-  process.exit(1);
-}
+dotenv.config();  
 
 const envSchema = z.object({
   SUPABASE_URL: z.string().url(),
@@ -14,7 +9,7 @@ const envSchema = z.object({
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(1),
 });
 
-const env = envSchema.safeParse(envs.parsed);
+const env = envSchema.safeParse(process.env);
 
 if (!env.success) {
   console.error("Erro na validação das variáveis de ambiente:", env.error.format());
