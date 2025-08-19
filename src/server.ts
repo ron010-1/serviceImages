@@ -1,14 +1,13 @@
 import express from 'express'
-import { setupSwagger } from './docs/swagger.js'
-import uploadRouter from './routes/uploadRouter.js'
+import { setupSwagger } from './docs/swagger';
+import router from './routes/upload.route';
 
 const app = express()
 
-// registra Swagger
 setupSwagger(app)
 
 app.use(express.json())
-app.use(uploadRouter);
+app.use(router);
 
 const port = 3000
 app.listen(port, () => {
