@@ -1,15 +1,16 @@
-import express from 'express'
-import { setupSwagger } from './docs/swagger';
-import router from './routes/upload.route';
+import express from "express";
+import { setupSwagger } from "./docs/swagger";
+import router from "./routes/upload.route";
+import cors from "cors";
 
-const app = express()
+const app = express();
+app.use(cors);
+setupSwagger(app);
 
-setupSwagger(app)
-
-app.use(express.json())
+app.use(express.json());
 app.use(router);
 
-const port = 3000
+const port = 3000;
 app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`)
-})
+  console.log(`Servidor rodando na porta ${port}`);
+});

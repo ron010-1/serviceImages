@@ -6,7 +6,7 @@ const options = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'Micro Serviço de Imagens por ron010-1.',
+            title: 'Micro Serviço de Imagens.',
             version: '1.0.0',
             description: 'Micro Serviço de Imagens com upload no supabase.'
         }
